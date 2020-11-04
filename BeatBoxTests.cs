@@ -1,10 +1,6 @@
 ﻿using NUnit.Framework;
 using Drummers_metronome_Windows;
 using System.Drawing;
-using System.Runtime.InteropServices.ComTypes;
-using System.Linq;
-using System;
-using System.Security.Cryptography.X509Certificates;
 
 namespace NUnitTest_Drummers_metronome_Windows
 {
