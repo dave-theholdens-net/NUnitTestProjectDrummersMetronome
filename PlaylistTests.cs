@@ -190,9 +190,9 @@ namespace NUnitTest_Drummers_metronome_Windows
             try
             {
                 Assert.Throws<PlaylistEntry.ValueOutOfRangeException>(() => Instantiate());
-            } catch { } 
+            } catch { }
             finally { id = 1; }
-            
+
         }
 
         [Test]
@@ -223,7 +223,7 @@ namespace NUnitTest_Drummers_metronome_Windows
         }
 
         [Test]
-        public void TestEmptyTitle() { 
+        public void TestEmptyTitle() {
 
             // title empty causes exception
             title = string.Empty;
@@ -234,9 +234,9 @@ namespace NUnitTest_Drummers_metronome_Windows
             catch { }
             finally { title = "Test Title"; }
         }
-        
+
         [Test]
-        public void TestNegativeCountin() { 
+        public void TestNegativeCountin() {
 
             // countin negative causes exception
             countIn = -1;
@@ -249,7 +249,7 @@ namespace NUnitTest_Drummers_metronome_Windows
         }
 
         [Test]
-        public void TestNegativeBeatsPerMeasure() { 
+        public void TestNegativeBeatsPerMeasure() {
 
             // beats per measure negative causes exception
             beatsPerMeasure = -1;
@@ -275,7 +275,7 @@ namespace NUnitTest_Drummers_metronome_Windows
         }
 
         [Test]
-        public void TestTempoGreaterThan300() { 
+        public void TestTempoGreaterThan300() {
 
             // tempo greater than 300 causes exception
             tempo = 301;
@@ -291,7 +291,7 @@ namespace NUnitTest_Drummers_metronome_Windows
         public void TestEquals()
         {
             Instantiate();
-            PlaylistEntry testPle = new PlaylistEntry() { Id=1};
+            PlaylistEntry testPle = new PlaylistEntry() { Id = 1 };
             Assert.IsTrue(testPle.Equals(playlistEntry));
             testPle.Id = 2;
             Assert.IsFalse(testPle.Equals(playlistEntry));
@@ -314,6 +314,60 @@ namespace NUnitTest_Drummers_metronome_Windows
             {
                 playlistEntry.OrdinalPosition = 1;
             }
+        }
+
+        [Test]
+        public void TestSimilarity()
+        {
+            Instantiate();
+            PlaylistEntry testPle = new PlaylistEntry()
+            {
+                Id = id,
+                PlayListId = playListId,
+                OrdinalPosition = ordinalPosition,
+                Title = title,
+                CountIn = countIn,
+                BeatsPerMeasure = beatsPerMeasure,
+                Tempo = tempo,
+                SongFileURL = songFileURL,
+                BackingTracksURL = backingTracksURL,
+                ChartURL = chartURL,
+                Notes = notes
+            };
+            Assert.IsTrue(testPle.PropertiesMatch(playlistEntry));
+            testPle.Id = 10;
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.Id = id;
+            testPle.PlayListId = 10;
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.PlayListId = playListId;
+            testPle.OrdinalPosition = 10;
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.OrdinalPosition = ordinalPosition;
+            testPle.Title = "delta title";
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.Title = title;
+            testPle.CountIn = 10;
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.CountIn = countIn;
+            testPle.BeatsPerMeasure = 10;
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.BeatsPerMeasure = beatsPerMeasure;
+            testPle.Tempo = 10;
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.Tempo = tempo;
+            testPle.SongFileURL = "delta song url";
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.SongFileURL = songFileURL;
+            testPle.BackingTracksURL = "delta backing url";
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.BackingTracksURL = backingTracksURL;
+            testPle.ChartURL = "delta chart url";
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.ChartURL = chartURL;
+            testPle.Notes = "delta notes";
+            Assert.IsFalse(testPle.PropertiesMatch(playlistEntry));
+            testPle.Notes = notes;
         }
     }
 }

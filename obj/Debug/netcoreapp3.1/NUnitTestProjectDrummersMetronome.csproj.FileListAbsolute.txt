@@ -101,4 +101,3 @@ C:\Users\Dave\source\repos\NUnitTestProjectDrummersMetronome\obj\Debug\netcoreap
 C:\Users\Dave\source\repos\NUnitTestProjectDrummersMetronome\obj\Debug\netcoreapp3.1\NUnitTestProject Drummers Metronome.dll
 C:\Users\Dave\source\repos\NUnitTestProjectDrummersMetronome\obj\Debug\netcoreapp3.1\NUnitTestProject Drummers Metronome.pdb
 C:\Users\Dave\source\repos\NUnitTestProjectDrummersMetronome\obj\Debug\netcoreapp3.1\NUnitTestProjectDrummersMetronome.genruntimeconfig.cache
-C:\Users\Dave\source\repos\NUnitTestProjectDrummersMetronome\bin\Debug\netcoreapp3.1\System.Windows.Forms.dll
